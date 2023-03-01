@@ -4,8 +4,8 @@
 import React, { useCallback, useState } from "react";
 import { Stack, RadioButton, TextField } from "@shopify/polaris";
 
-export function DiscountTypeAndValueStack() {
-    const [discountType, setDiscountType] = useState("percentage");
+export function DiscountTypeAndValueStack({ dtvsid }) {
+    const [discountType, setDiscountType] = useState("percentage_" + dtvsid);
     const [discountAmount, setDiscountAmount] = useState("");
     const handleDiscountAmountChange = (value) => {
         setDiscountAmount(value);
@@ -21,9 +21,9 @@ export function DiscountTypeAndValueStack() {
                 <RadioButton
                     label="Percentage"
                     helpText="Apply % based discount"
-                    checked={discountType === "percentage"}
-                    id="percentage"
-                    name="rb1"
+                    checked={discountType === "percentage_" + dtvsid}
+                    id={"percentage_" + dtvsid}
+                    name={"rb1_" + dtvsid}
                     onChange={handleDiscountTypeChange}
                 />
             </Stack.Item>
@@ -31,16 +31,16 @@ export function DiscountTypeAndValueStack() {
                 <RadioButton
                     label="Value"
                     helpText="Apply fixed value discount"
-                    id="value"
-                    name="rb2"
-                    checked={discountType === "value"}
+                    id={"value_" + dtvsid}
+                    name={"rb2_" + dtvsid}
+                    checked={discountType === "value_" + dtvsid}
                     onChange={handleDiscountTypeChange}
                 />
             </Stack.Item>
             <Stack.Item fill>
                 <TextField
                     label={
-                        discountType === "percentage"
+                        discountType === "percentage_" + dtvsid
                             ? "Discount Percentage (%)"
                             : "Discount Value (₹)"
                     }

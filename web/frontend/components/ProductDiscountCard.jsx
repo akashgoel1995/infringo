@@ -46,7 +46,7 @@ export function ProductDiscountCard({ id }) {
                 selectedProduct ? (
                     <Card title={"Discount #" + (id + 1)}>
                         <Card.Section>
-                            <DiscountTypeAndValueStack />
+                            <DiscountTypeAndValueStack key={id} dtvsid={id} />
                         </Card.Section>
                         <Card.Section>
                             <Stack wrap={false} spacing="loose">
@@ -75,7 +75,7 @@ export function ProductDiscountCard({ id }) {
                 ) : (
                     <Card title={"Discount #" + (id + 1)}>
                         <Card.Section>
-                            <DiscountTypeAndValueStack />
+                            <DiscountTypeAndValueStack key={id} dtvsid={id} />
                         </Card.Section>
                         <Card.Section>
                             <Stack vertical spacing="extraTight">
